@@ -19,9 +19,10 @@ if ($depot) { $depot = "-depot $depot" }
 $root_dir = $PSScriptRoot
 $tools_dir = "$root_dir\tools"
 $project_dir = "$root_dir\src"
-$patch_dir = "$project_dir\Dependencies\Patched"
+$deps_dir = "$project_dir\Dependencies"
+$patch_dir = "$deps_dir\Patched"
 $managed_dir = "$patch_dir\$managed"
-New-Item "$tools_dir", "$patch_dir", "$managed_dir" -ItemType Directory -Force | Out-Null
+New-Item "$tools_dir", "$managed_dir" -ItemType Directory -Force | Out-Null
 
 # Set name for Oxide patcher file (.opj)
 if ("$branch" -ne "public" -and (Test-Path "$root_dir\resources\$game_name-$branch.opj")) {
@@ -47,8 +48,8 @@ function Find-Dependencies {
     }
 
     # Copy any local dependencies
-    if (Test-Path "$project_dir\Dependencies\*.dll") {
-        Copy-Item "$project_dir\Dependencies\*.dll" "$managed_dir" -Force
+    if (Test-Path "$deps_dir\Original\*.dll") {
+        Copy-Item "$deps_dir\Original\*.dll" "$managed_dir" -Force
     }
 
     # Check if Steam is used for game dependencies
@@ -178,7 +179,6 @@ function Get-Dependencies {
         }
     }
     Write-Host "Copying latest build of Oxide.Core.dll for OxidePatcher"
-    Write-Host $managed_dir
     if (!(Test-Path "$managed_dir\Oxide.Core.dll")) {
         try {
             Copy-Item "$root_dir\packages\oxide.core\*\lib\$dotnet\Oxide.Core.dll" "$managed_dir" -Force

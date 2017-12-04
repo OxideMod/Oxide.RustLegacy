@@ -32,13 +32,13 @@
       <HintPath>Dependencies\Patched\$(ManagedDir)\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Facepunch.ID">
-      <HintPath>Dependencies\Original\$(ManagedDir)\Facepunch.ID.dll</HintPath>
+      <HintPath>Dependencies\Patched\$(ManagedDir)\Facepunch.ID.dll</HintPath>
     </Reference>
     <Reference Include="uLink">
       <HintPath>Dependencies\Patched\$(ManagedDir)\uLink.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>Dependencies\Original\$(ManagedDir)\UnityEngine.dll</HintPath>
+      <HintPath>Dependencies\Patched\$(ManagedDir)\UnityEngine.dll</HintPath>
     </Reference>
     <None Remove="Bundle\**; Files\**; Patched\**; **\Original\**; *.config; *.opj" />
   </ItemGroup>
