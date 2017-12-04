@@ -46,7 +46,7 @@
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <Target Name="Clean">
-    <RemoveDir Directories="$(ProjectDir)\Bundle\$(PackageId); $(ProjectDir)\Dependencies\Patched\$(ManagedDir)" />
+    <RemoveDir Directories="$(ProjectDir)\bin\Bundle\$(PackageId); $(ProjectDir)\Dependencies\Patched\$(ManagedDir)" />
   </Target>
   <Target Name="ChangeAliasesOfStrongNameAssemblies" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
     <ItemGroup>
@@ -85,7 +85,7 @@
       <Output PropertyName="DeployPath" TaskParameter="Lines" />
     </ReadLinesFromFile>
     <ItemGroup>
-      <DeployFiles Include="$(ProjectDir)\Bundle\$(PackageId)\**\*.*" />
+      <DeployFiles Include="$(ProjectDir)\bin\Bundle\$(PackageId)\**\*.*" />
     </ItemGroup>
     <Copy Condition="'$(DeployPath)' != ''" SourceFiles="@(DeployFiles)" DestinationFiles="@(DeployFiles->'$(DeployPath)\%(RecursiveDir)%(Filename)%(Extension)')" />
   </Target>
