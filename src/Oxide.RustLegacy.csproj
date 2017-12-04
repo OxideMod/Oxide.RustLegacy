@@ -24,6 +24,8 @@
     <FrameworkPathOverride Condition="'$(TargetFramework)' == 'net35' And '$(OS)' == 'OSX'">/Library/Frameworks/Mono.framework/Versions/Current/lib/mono/2.0-api</FrameworkPathOverride>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Oxide.References" Version="2.0.*" />
+    <PackageReference Include="Oxide.Core" Version="2.0.*" />
     <PackageReference Include="Oxide.CSharp" Version="2.0.*" />
     <PackageReference Include="Oxide.MySql" Version="2.0.*" />
     <PackageReference Include="Oxide.SQLite" Version="2.0.*" />
@@ -44,7 +46,7 @@
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <Target Name="Clean">
-    <RemoveDir Directories="$(ProjectDir)\Bundle\$(PackageId); $(ProjectDir)\Dependencies\$(ManagedDir)" />
+    <RemoveDir Directories="$(ProjectDir)\Bundle\$(PackageId); $(ProjectDir)\Dependencies\Patched\$(ManagedDir)" />
   </Target>
   <Target Name="ChangeAliasesOfStrongNameAssemblies" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
     <ItemGroup>
