@@ -208,7 +208,7 @@ namespace Oxide.Game.RustLegacy
             if (arg == null) return null;
 
             var cmdFullName = $"{arg.Class}.{arg.Function}";
-            var str = string.Join(" ", arg.Args);
+            var str = string.Join(" ", arg.Args ?? new string[] { });
             var netUser = arg.argUser;
 
             // Get the covalence player
