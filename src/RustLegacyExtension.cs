@@ -42,6 +42,11 @@ namespace Oxide.Game.RustLegacy
         public override VersionNumber Version => AssemblyVersion;
 
         /// <summary>
+        /// Gets the branch of this extension
+        /// </summary>
+        public override string Branch => "public"; // TODO: Handle this programmatically
+
+        /// <summary>
         /// Default game-specific references for use in plugins
         /// </summary>
         internal static readonly HashSet<string> DefaultReferences = new HashSet<string>
@@ -169,7 +174,7 @@ namespace Oxide.Game.RustLegacy
                 var gameTime = DateTime.Today.AddHours(EnvironmentControlCenter.Singleton.GetTime()).ToString("hh:mm tt");
                 return $"{gameTime.ToLower()}, {(server.pvp ? "PvP" : "PvE")}";
             };
-            Interface.Oxide.ServerConsole.Status3Right = () => $"Oxide {OxideMod.Version} for {Rust.Defines.Connection.protocol}";
+            Interface.Oxide.ServerConsole.Status3Right = () => $"Oxide.RustLegacy {AssemblyVersion}";
             Interface.Oxide.ServerConsole.Status3RightColor = ConsoleColor.Yellow;
         }
 
